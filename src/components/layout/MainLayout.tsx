@@ -1,13 +1,16 @@
 import React from "react";
 import Header from "../Header";
+import { Outlet } from "react-router";
 
-type MainLayoutProps = { children: React.ReactNode };
+type MainLayoutProps = {};
 
-const MainLayout = ({ children }: MainLayoutProps): React.ReactNode => {
+const MainLayout = ({}: MainLayoutProps): React.ReactNode => {
   return (
     <div className="flex flex-col h-full w-full ">
       <Header />
-      <main className="flex h-full justify-center">{children}</main>
+      <main className="flex h-full justify-center">
+        <Outlet />
+      </main>
     </div>
   );
 };
