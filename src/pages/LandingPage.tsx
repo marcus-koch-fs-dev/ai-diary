@@ -1,4 +1,4 @@
-import { LoginForm } from "@/components/auth/LoginForm";
+import { LoginForm } from "@/components/organisms/LoginForm/LoginForm";
 import spacePicture from "/assets/images/lucid.jpg";
 
 type LandingPageProps = {};

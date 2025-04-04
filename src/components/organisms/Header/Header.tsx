@@ -1,6 +1,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/context/theme.context";
-import { Button } from "./ui/button";
+import { Button } from "@/components/atoms/button";
 
 type HeaderProps = {};
 

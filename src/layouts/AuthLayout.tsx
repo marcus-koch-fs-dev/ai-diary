@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../Header";
+import Header from "../components/organisms/Header/Header";
 import { Outlet } from "react-router";
 
-type MainLayoutProps = {};
+type AuthLayoutProps = {};
 
-const MainLayout = ({}: MainLayoutProps): React.ReactNode => {
+const AuthLayout = ({}: AuthLayoutProps): React.ReactNode => {
   return (
     <div className="flex flex-col h-full w-full ">
       <Header />
@@ -15,4 +15,4 @@ const MainLayout = ({}: MainLayoutProps): React.ReactNode => {
   );
 };
 
-export default MainLayout;
+export default AuthLayout;
