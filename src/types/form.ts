@@ -1,3 +1,19 @@
+// Schema for Forms Types
+type Rule = {
+  test: (value: string) => boolean;
+  message: string;
+};
+
+type Rules = Rule[];
+
+type SchemaRule = {
+  label: string;
+  rules: Rules;
+};
+
+export type Schema<T extends string = string> = Record<T, SchemaRule>;
+
+// Form Types
 export type ValidationRule = {
   test: (value: string) => boolean;
   message: string;

@@ -5,7 +5,7 @@ import { Label } from "@/components/atoms/label";
 import { useNavigate } from "react-router";
 import { postLogin } from "@/apis/auth.api";
 import { useForm } from "@/hooks/useForm";
-import { loginSchema } from "@/schemas/loginSchema";
+import { loginSchema } from "@/schemas/formSchemas";
 import { useAuth } from "@/context/auth.context";
 
 export const LoginForm = ({

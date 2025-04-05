@@ -1,4 +1,8 @@
-export const loginSchema = {
+import { Schema } from "@/types/form";
+
+type FieldNames = "email" | "password";
+
+export const loginSchema: Schema<FieldNames> = {
   email: {
     label: "E-Mail",
     rules: [
