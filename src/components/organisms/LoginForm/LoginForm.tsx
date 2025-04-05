@@ -7,6 +7,7 @@ import { postLogin } from "@/apis/auth.api";
 import { useForm } from "@/hooks/useForm";
 import { loginSchema } from "@/schemas/formSchemas";
 import { useAuth } from "@/context/auth.context";
+import { toast } from "sonner";
 
 export const LoginForm = ({
   className,
@@ -16,14 +17,17 @@ export const LoginForm = ({
     useForm(loginSchema);
   const { authenticate } = useAuth();
   const navigate = useNavigate();
+  const { user: cUser } = useAuth();
 
   const onSubmit = async (user: typeof values) => {
     try {
       const { data } = await postLogin(user.email, user.password);
       authenticate(data);
+      toast.success(`Welcome ${cUser?.username}`);
       navigate("/dashboard");
     } catch (err) {
       console.error("Login failed", err);
+      toast.error("Login failed");
     }
   };
 
