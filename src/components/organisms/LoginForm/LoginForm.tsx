@@ -8,6 +8,7 @@ import { useForm } from "@/hooks/useForm";
 import { loginSchema } from "@/schemas/formSchemas";
 import { useAuth } from "@/context/auth.context";
 import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 export const LoginForm = ({
   className,
@@ -26,8 +27,12 @@ export const LoginForm = ({
       toast.success(`Welcome ${cUser?.username}`);
       navigate("/dashboard");
     } catch (err) {
-      console.error("Login failed", err);
-      toast.error("Login failed");
+      const error = err as AxiosError<{ message: string }>;
+
+      if (error.response?.status === 401) {
+        toast.error("Login failed");
+      }
+      throw new Error("Manual throw: invalid credentials (intercepted)");
     }
   };
 

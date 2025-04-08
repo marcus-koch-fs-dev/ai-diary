@@ -3,16 +3,18 @@ import { restHandlers } from "../mocks/mockServer";
 
 export const server = setupServer(...restHandlers);
 
-export function setupGlobalTests() {
-  // Start the mock server before all tests
-  beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
+// Start the mock server before all tests
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: "error" });
+  localStorage.clear();
+  console.log("Mock server runs");
+});
 
-  // Close the mock server after all tests
-  afterAll(() => server.close());
+// Close the mock server after all tests
+afterAll(() => server.close());
 
-  // Reset the server state and clean up after each test
-  afterEach(() => {
-    server.resetHandlers();
-    document.body.innerHTML = "";
-  });
-}
+// Reset the server state and clean up after each test
+afterEach(() => {
+  server.resetHandlers();
+  document.body.innerHTML = "";
+});
