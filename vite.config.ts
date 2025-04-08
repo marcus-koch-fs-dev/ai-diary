@@ -18,7 +18,9 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: "jsdom",
+    environment: "jsdom", //Use commands without import
     setupFiles: ["./src/tests/setup.ts"],
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx"], // ✅ nur Unit/Integration
+    exclude: ["e2e", "**/*.spec.ts"], // ❌ Playwright-Dateien raus
   },
 });
