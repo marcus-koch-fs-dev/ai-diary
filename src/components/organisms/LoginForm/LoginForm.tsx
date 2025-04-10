@@ -18,19 +18,19 @@ export const LoginForm = ({
     useForm(loginSchema);
   const { authenticate } = useAuth();
   const navigate = useNavigate();
-  const { user: cUser } = useAuth();
 
   const onSubmit = async (user: typeof values) => {
     try {
       const { data } = await postLogin(user.email, user.password);
       authenticate(data);
-      toast.success(`Welcome ${cUser?.username}`);
+      toast.success(`Welcome ${data.user.username}`);
       navigate("/dashboard");
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
 
       if (error.response?.status === 401) {
         toast.error("Login failed");
+        return;
       }
       throw new Error("Manual throw: invalid credentials (intercepted)");
     }

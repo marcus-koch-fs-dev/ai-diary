@@ -44,7 +44,7 @@ export const restHandlers = [
 
     return HttpResponse.json({
       token: "testToken123456",
-      user: { username, email, role },
+      user: { username: user.username, email: user.email, role: user.role },
     });
   }),
 ];

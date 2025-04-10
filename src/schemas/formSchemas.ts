@@ -7,11 +7,14 @@ export const loginSchema: Schema<FieldNames> = {
     label: "E-Mail",
     rules: [
       { test: (v) => v.length > 0, message: "Pflichtfeld" },
-      { test: (v) => v.includes("@"), message: "Ungültige E-Mail" },
+      {
+        test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+        message: "Ungültige E-Mail",
+      },
     ],
   },
   password: {
     label: "Passwort",
-    rules: [{ test: (v) => v.length >= 3, message: "Mind. 3 Zeichen" }],
+    rules: [{ test: (v) => v.length >= 3, message: "Mind. 6 Zeichen" }],
   },
 };
