@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom";
 import { setupServer } from "msw/node";
 import { restHandlers } from "../mocks/mockServer";
 
